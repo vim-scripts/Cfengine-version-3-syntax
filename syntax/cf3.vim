@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:     Cfengine version 3
 " Maintainer:   Neil Watson <neil@watson-wilson.ca>
-" Last Change:  Thursday December 24 2009 
+" Last Change:  Thursday September 23 2010 
 " Location:
 "
 " This is my first attempt at a syntax file.  Feel free to send me correctsion
@@ -35,7 +35,7 @@ syn region  cf3Array        start=/\[/ end=/\]/ contained contains=cf3Var
 " Variables wrapped in {} or ()
 syn region  cf3Var          start=/\$[{(]/ end=/[})]/ contained contains=cf3Var,cf3Array
 syn region  cf3String       start=/"/ skip=/\\"/ end=/"/ contains=cf3Var,cf3Array,cf3Esc
-syn keyword cf3Type         int ilist slist float not and string expression 
+syn keyword cf3Type         int ilist slist float not and string expression real rlist
 syn keyword cf3OnOff        on off yes no true false  
 
 if version >= 508 || !exists("did_cfg_syn_inits")
@@ -63,3 +63,4 @@ let b:current_syntax = "cf3"
 
 " CREDITS
 " Neil Watson <neil@watson-wilson.ca>
+" Aleksey Tsalolikhin
