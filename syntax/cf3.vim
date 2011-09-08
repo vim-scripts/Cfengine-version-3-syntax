@@ -21,13 +21,14 @@ elseif exists ("b:current_syntax")
 endif
 
 syn case ignore
-syn keyword cf3Body agent common server executor reporter monitor
+syn keyword cf3BodyTypes agent common server executor reporter monitor runagent action classes contain copy_from delete delete_select depth_search edit_defaults file_select link_from perms process_count process_select rename contained
+syn match   cf3Body /^\s*body.*$/ contains=Cf3BodyTypes
 syn keyword TODO todo contained
 syn match   cf3Comment      /#.*/ contains=TODO
 syn match   cf3Identifier   /=>/
 " For actions e.g. reports:, commands:
-syn match   cf3Action       /[^:]\+:$/
-syn match   cf3Class        /[^:]\+::$/
+syn match   cf3Action       /[^:#]\+:\s*$/
+syn match   cf3Class        /[^:#]\+::\s*$/
 " Escape sequences in regexes
 syn match   cf3Esc          /\\\\[sSdD+][\+\*]*/ contained
 " Array indexes contained in [].  Does not seems to be working.
@@ -45,10 +46,10 @@ if version >= 508 || !exists("did_cfg_syn_inits")
     else
         command -nargs=+ HiLink hi def link <args>
     endif
-    HiLink cf3Body          Function
+    HiLink cf3BodyTypes     Function
     HiLink cf3Comment	    Comment
     HiLink cf3Identifier    Identifier
-    HiLink cf3Action        Statement
+    HiLink cf3Action        Underlined
     HiLink cf3Class         Statement
     HiLink cf3Esc           Special
     HiLink cf3Array         Special
@@ -64,3 +65,4 @@ let b:current_syntax = "cf3"
 " CREDITS
 " Neil Watson <neil@watson-wilson.ca>
 " Aleksey Tsalolikhin
+" John Coleman of Yale U
