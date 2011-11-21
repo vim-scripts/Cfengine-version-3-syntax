@@ -34,7 +34,7 @@ syn match   cf3Esc          /\\\\[sSdD+][\+\*]*/ contained
 " Array indexes contained in [].  Does not seems to be working.
 syn region  cf3Array        start=/\[/ end=/\]/ contained contains=cf3Var
 " Variables wrapped in {} or ()
-syn region  cf3Var          start=/\$[{(]/ end=/[})]/ contained contains=cf3Var,cf3Array
+syn region  cf3Var          start=/[$@][{(]/ end=/[})]/ contained contains=cf3Var,cf3Array
 syn region  cf3String       start=/"/ skip=/\\"/ end=/"/ contains=cf3Var,cf3Array,cf3Esc
 syn keyword cf3Type         int ilist slist float not and string expression real rlist
 syn keyword cf3OnOff        on off yes no true false  
