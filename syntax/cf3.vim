@@ -35,7 +35,7 @@ syn match   cf3Esc          /\\\\[sSdD+][\+\*]*/ contained
 syn region  cf3Array        start=/\[/ end=/\]/ contained contains=cf3Var
 " Variables wrapped in {} or ()
 syn region  cf3Var          start=/[$@][{(]/ end=/[})]/ contained contains=cf3Var,cf3Array
-syn region  cf3String       start=/"/ skip=/\\"/ end=/"/ contains=cf3Var,cf3Array,cf3Esc
+syn region  cf3String       start=/\z\("\|'\)/ skip=/\\\z1/ end=/\z1/ contains=cf3Var,cf3Array,cf3Esc
 syn keyword cf3Type         int ilist slist float not and string expression real rlist
 syn keyword cf3OnOff        on off yes no true false  
 
@@ -66,3 +66,4 @@ let b:current_syntax = "cf3"
 " Neil Watson <neil@watson-wilson.ca>
 " Aleksey Tsalolikhin
 " John Coleman of Yale U
+" Matt Lesko
